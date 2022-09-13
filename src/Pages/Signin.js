@@ -1,21 +1,21 @@
 import Input from "../Components/Input";
 import { useForm } from "react-hook-form";
+import { Button, Form } from "react-bootstrap";
 
 export default function Signin() {
-
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm();
-const onSubmit = (data) => {
-  //send
-  console.log("form", data);
-};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    //send
+    console.log("form", data);
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Name"
           register={{ ...register("name", { required: true }) }}
@@ -36,8 +36,10 @@ const onSubmit = (data) => {
           register={{ ...register("password", { required: true }) }}
         />
         {errors.password && <span>Mandatory</span>}
-        <button type="submit">Sign Me Up</button>
-      </form>
+        <Button type="submit" variant="dark">
+          Sign Me Up
+        </Button>
+      </Form>
     </div>
   );
 }

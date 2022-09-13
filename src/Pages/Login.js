@@ -1,5 +1,6 @@
 import Input from "../Components/Input";
 import { useForm } from "react-hook-form";
+import { Button, Form } from "react-bootstrap";
 
 export default function Login() {
   const {
@@ -14,7 +15,7 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="E-Mail"
           register={{ ...register("email", { required: true }) }}
@@ -25,8 +26,10 @@ export default function Login() {
           register={{ ...register("password", { required: true }) }}
         />
         {errors.password && <span>Mandatory</span>}
-        <button type="submit">Log In</button>
-      </form>
+        <Button type="submit" variant="dark">
+          Log In
+        </Button>
+      </Form>
     </div>
   );
 }

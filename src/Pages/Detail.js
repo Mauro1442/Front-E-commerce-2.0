@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getByIdProducts } from "../Services/productsServices";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 
 export default function Detail() {
   const { id } = useParams();
@@ -34,6 +35,9 @@ export default function Detail() {
           <li>Code: {product.code}</li>
           <li>ID: {product._id}</li>
         </ul>
+        <Button type="submit" variant="warning">
+        Buy
+      </Button>
       </div>
     );
   }

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllProducts } from "../Services/productsServices";
 import Product from "./Product";
+import { Row } from "react-bootstrap";
 
 export default function Products() {
   const [productsList, setProductsList] = useState([]);
@@ -29,15 +30,17 @@ export default function Products() {
     return (
       <div>
         <h1>Products</h1>
-        {productsList.map((productOfList) => (
-          <Product
-            name={productOfList.name}
-            price={productOfList.price}
-            description={productOfList.description}
-            id={productOfList._id}
-            code={productOfList.code}
-          />
-        ))}
+        <Row>
+          {productsList.map((productOfList) => (
+            <Product
+              name={productOfList.name}
+              price={productOfList.price}
+              description={productOfList.description}
+              id={productOfList._id}
+              code={productOfList.code}
+            />
+          ))}
+        </Row>
       </div>
     );
   }
