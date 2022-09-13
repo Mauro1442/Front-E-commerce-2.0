@@ -1,14 +1,14 @@
 import "./App.css";
-import Home from "./Pages/Home";
+import Public from "./Routes/Public";
+import { BrowserRouter as Router } from "react-router-dom";
+import Menu from "./Components/Menu";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>My FullStack App</p>
-        <Home />
-      </header>
-    </div>
+    <Router>
+      <Menu />
+      <Public />
+    </Router>
   );
 }
 

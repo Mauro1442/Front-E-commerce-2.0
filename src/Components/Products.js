@@ -9,6 +9,8 @@ export default function Products() {
   useEffect(() => {
     const request = async () => {
       try {
+        setLoading(true);
+
         const response = await getAllProducts();
         console.log("response", response);
         setProductsList(response.data);
@@ -32,6 +34,8 @@ export default function Products() {
             name={productOfList.name}
             price={productOfList.price}
             description={productOfList.description}
+            id={productOfList._id}
+            code={productOfList.code}
           />
         ))}
       </div>
