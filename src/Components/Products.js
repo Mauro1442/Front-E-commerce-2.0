@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getAllProducts } from "../Services/productsServices";
 import Product from "./Product";
 
 export default function Products() {
@@ -6,16 +7,19 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api-nodeservice.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProductsList(data);
+    const request = async () => {
+      try {
+        const response = await getAllProducts();
+        console.log("response", response);
+        setProductsList(response.data);
         setLoading(false);
-        console.log("data", data.results);
-      })
-      .catch((e) => {
+        console.log("products", response);
+      } catch (e) {
         console.log(e);
-      });
+        setLoading(false);
+      }
+    };
+    request();
   }, []);
   if (loading) {
     return "loading...";
