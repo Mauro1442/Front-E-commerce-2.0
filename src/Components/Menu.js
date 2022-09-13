@@ -11,6 +11,9 @@ export default function Menu() {
         <li>
           <Link to="/sign">Sign In</Link>
         </li>
+        <li>
+          <Link to="/log">Log In</Link>
+        </li>
       </ul>
     </div>
   );
