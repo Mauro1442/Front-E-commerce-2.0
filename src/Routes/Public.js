@@ -7,7 +7,6 @@ import NotFound from "../Pages/NotFound";
 import Signin from "../Pages/Signin";
 import Login from "../Pages/Login";
 
-
 export default function Public() {
   return (
     <Routes>

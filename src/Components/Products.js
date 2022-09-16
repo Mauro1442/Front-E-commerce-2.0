@@ -13,7 +13,6 @@ export default function Products() {
         setLoading(true);
 
         const response = await getAllProducts();
-        console.log("response", response);
         setProductsList(response.data);
         setLoading(false);
         console.log("products", response);
