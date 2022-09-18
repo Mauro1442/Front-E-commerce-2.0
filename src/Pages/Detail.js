@@ -2,11 +2,15 @@ import { useParams } from "react-router-dom";
 import { getByIdProducts } from "../Services/productsServices";
 import  { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Detail() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const request = async () => {
@@ -35,9 +39,10 @@ export default function Detail() {
           <li>Code: {product.code}</li>
           <li>ID: {product._id}</li>
         </ul>
-        <Button type="submit" variant="warning">
-        Buy
-      </Button>
+        <Button type="submit" variant="warning" onClick={() => navigate("/buy")}>
+          Buy
+        </Button>
+ 
       </div>
     );
   }

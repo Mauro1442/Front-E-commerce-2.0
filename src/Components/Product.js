@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Product(props) {
+  const navigate = useNavigate();
+
   const { name, price, code, description, id } = props;
   return (
     <Col>
@@ -18,9 +22,11 @@ export default function Product(props) {
           <Button variant="dark" as={Link} to={"/product/" + id}>
             See Detail
           </Button>
-          <Button type="submit" variant="warning">
-            Buy
-          </Button>
+
+            <Button type="submit" variant="warning" onClick={() => navigate("/buy")}>
+          Buy
+        </Button>
+ 
         </Card.Body>
       </Card>
     </Col>

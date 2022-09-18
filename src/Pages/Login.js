@@ -1,12 +1,17 @@
-import { useState } from "react";
 import Input from "../Components/Input";
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-//import { login } from "../Services/usersServices";
-import axios from "../Config/Axios";
+import AlertCustom from "../Components/Alert";
 
-export default function Login() {
+import { useNavigate } from "react-router-dom";
+import axios from "../Config/Axios";
+import AuthContext from "../Context/AuthContext";
+import { useState, useContext } from "react";
+
+export default function Login(props) {
+
+  const context = useContext(AuthContext)
+  const [alert, setAlert] = useState({ variant: "", text: "" });
 
 
   const {
@@ -15,7 +20,8 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+
+
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -30,16 +36,28 @@ export default function Login() {
 
     axios(config)
       .then(function (response) {
-        localStorage.setItem("access_token", JSON.stringify(response.data));
+        localStorage.setItem("access_token", JSON.stringify(response.data.token));
         console.log(response);
-        setLoggedIn(true);
+        if (response.data.token === undefined){
+          setAlert({ variant: "danger", text: response.data.message });
+        }else{
+        context.loginUser();
+        console.log(response.data)
+        setAlert({
+          variant: "success",
+          text: "Welcome",
+        });
+        }
+
+
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (e) {
+        console.log(e);
+        setAlert({ variant: "danger", text: e });
+
       });
   };
 
-  if (!loggedIn) {
     return (
       <div>
         <Form
@@ -62,17 +80,10 @@ export default function Login() {
           <Button type="submit" variant="dark">
             Log In
           </Button>
+          <AlertCustom variant={alert.variant} text={alert.text} />
+
         </Form>
       </div>
     );
-  } else {
-    return (
-      <>
-        <p>Welcome!</p>
-        <Button variant="dark" onClick={() => navigate("/")}>
-          To Home
-        </Button>
-      </>
-    );
-  }
+
 }

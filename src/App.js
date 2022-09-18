@@ -3,15 +3,18 @@ import Public from "./Routes/Public";
 import { BrowserRouter as Router } from "react-router-dom";
 import Menu from "./Components/Menu";
 import { Container } from "react-bootstrap";
+import AuthProvider from "./Context/AuthProvider";
 
 function App() {
   return (
-    <Router>
-      <Container>
-        <Menu />
-        <Public />
-      </Container>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Container>
+          <Menu />
+          <Public />
+        </Container>
+      </Router>
+    </AuthProvider>
   );
 }
 
