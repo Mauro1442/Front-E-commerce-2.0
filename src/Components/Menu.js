@@ -23,7 +23,13 @@ export default function Menu() {
         <Navbar className="nbar" bg="light" expand="lg" sticky="top">
         <Container className="cont" >
           <Navbar.Brand as={Link} to="/">
-            AudiAX
+            <img               
+                alt=""
+                src="../audiax logo.png"
+                width="150"
+                height="50"
+                className="d-inline-block align-top"
+              />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

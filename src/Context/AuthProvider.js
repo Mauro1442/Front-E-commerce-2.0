@@ -15,7 +15,7 @@ export default function AuthProvider(props) {
     setUserLogin(false);
   };
 
-  JSON.parse(window.localStorage.getItem("access_token"))? setTimeout(() => {loginUser()}, 50)  : logoutUser() ;
+  JSON.parse(window.localStorage.getItem("access_token"))? setTimeout(() => {loginUser()}, 50)  : setTimeout(() => {logoutUser()}, 50) ;
 
   return (
     <AuthContext.Provider
