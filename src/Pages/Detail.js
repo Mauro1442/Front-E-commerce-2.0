@@ -33,7 +33,7 @@ export default function Detail() {
       <div style={{
         width: 400, height: 400, display: "inline-flex"
       }}>
-                <img src={product.code} alt="large"></img>
+                <img src={product.code} alt="large" style={{maxHeight: "400"}}></img>
 
       </div>
         <h4>Price: {product.price}</h4>

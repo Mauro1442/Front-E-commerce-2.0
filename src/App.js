@@ -9,8 +9,9 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+                <Menu />
         <Container>
-          <Menu />
+
           <Public />
         </Container>
       </Router>

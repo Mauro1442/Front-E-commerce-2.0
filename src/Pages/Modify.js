@@ -31,6 +31,9 @@ function ModifyItem() {
         setValue("price", response.data.price);
         setValue("code", response.data.code);
         setValue("description", response.data.description);
+        setValue("destacado", response.data.destacado);
+
+
       } catch (e) {}
     };
     request();
@@ -50,10 +53,19 @@ function ModifyItem() {
     console.log("Form", data);
     try {
       const document = await axios(config);
-
       console.log("document", document);
+      setAlert({
+        variant: "success",
+        text: "Item Updated",
+      })
+      setTimeout(() => {
+        navigate("/")
+      }, 1000);
+    
     } catch (e) {
       console.log(e);
+      setAlert({ variant: "danger", text: e });
+
     }
   };
   return (
@@ -81,10 +93,18 @@ function ModifyItem() {
           register={{ ...register("code", { required: true }) }}
         />
         {errors.thumbnail && <span>Mandatory field</span>}
+        <Input
+          label="Featured (true/false)"
+          type="boolean"
+          register={{ ...register("destacado") }}
+        />
+        {errors.destacado && <span>Mandatory</span>}
 
         <Button variant="dark" type="submit">
           Update
         </Button>
+        <AlertCustom variant={alert.variant} text={alert.text} />
+
       </Form>
     </>
   );

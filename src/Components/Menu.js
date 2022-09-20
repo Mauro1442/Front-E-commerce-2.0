@@ -1,7 +1,9 @@
-import { Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, NavDropdown, Nav, Form, Button } from "react-bootstrap";
 import AuthContext from "../Context/AuthContext";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import "./Menu.css"
 
 export default function Menu() {
   const context = useContext(AuthContext);
@@ -18,7 +20,8 @@ export default function Menu() {
   return (
     <AuthContext.Consumer>
       {(context) => (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="nbar" bg="light" expand="lg" sticky="top">
+        <Container className="cont" >
           <Navbar.Brand as={Link} to="/">
             AudiAX
           </Navbar.Brand>
@@ -52,7 +55,7 @@ export default function Menu() {
                       Delete Item
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">
-                      Something
+                      Contact
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">
@@ -62,7 +65,17 @@ export default function Menu() {
                 </>
               )}
             </Nav>
+            <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-dark">Search</Button>
+          </Form>
           </Navbar.Collapse>
+      </Container>
         </Navbar>
       )}
     </AuthContext.Consumer>

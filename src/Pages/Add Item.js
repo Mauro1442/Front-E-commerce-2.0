@@ -83,7 +83,7 @@ export default function AddItem(props) {
         />
         {errors.quantity && <span>Mandatory</span>}
         <Input
-          label="Featured"
+          label="Featured (true/false)"
           type="boolean"
           register={{ ...register("destacado") }}
         />
