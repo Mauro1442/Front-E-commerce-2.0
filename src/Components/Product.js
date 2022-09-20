@@ -2,31 +2,27 @@ import { Link } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Product(props) {
   const navigate = useNavigate();
 
   const { name, price, code, description, id } = props;
   return (
     <Col>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card
+        style={{ width: "18rem", textDecoration: "none", color: "black" }}
+        as={Link}
+        to={"/product/" + id}
+      >
+        <Card.Img variant="top" src={code} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>${price}</Card.Title>
           <Card.Text>
-            <li>price: {price}</li>
-            <li>code: {code}</li>
-            <li>description: {description} </li>
-            <li>id: {id}</li>
+            <p>{name}</p>
           </Card.Text>
-          <Button variant="dark" as={Link} to={"/product/" + id}>
-            See Detail
-          </Button>
 
-            <Button type="submit" variant="warning" onClick={() => navigate("/buy")}>
-          Buy
-        </Button>
- 
+          <Button type="submit" variant="dark" onClick={() => navigate("/buy")}>
+            Order
+          </Button>
         </Card.Body>
       </Card>
     </Col>

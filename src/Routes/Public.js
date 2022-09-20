@@ -6,10 +6,11 @@ import Home from "../Pages/Home";
 import NotFound from "../Pages/NotFound";
 import Signin from "../Pages/Signin";
 import Login from "../Pages/Login";
+import AddItem from "../Pages/Add Item";
+import DeleteItem from "../Pages/Delete Item";
 
 export default function Public(props) {
 
-const {setLogin} = props
 
   return (
     <Routes>
@@ -19,6 +20,8 @@ const {setLogin} = props
       <Route path="/buy" element={<Buy />} />
       <Route path="/log" element={<Login setLogin={props.setLogin}/>} />
       <Route path="/sign" element={<Signin />} />
+      <Route path="/add" element={<AddItem />} />
+      <Route path="/delete" element={<DeleteItem />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -3,7 +3,6 @@ import Input from "../Components/Input";
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-//import { login } from "../Services/usersServices";
 import axios from "../Config/Axios";
 
 export default function Signin() {

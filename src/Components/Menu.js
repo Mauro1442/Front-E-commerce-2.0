@@ -26,11 +26,6 @@ function handleClick() {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-{context.userLogin &&
-<Nav.Link onClick={handleClick}>
-              Log Out
-            </Nav.Link>
-}
 
 
 {!context.userLogin && <>
@@ -48,12 +43,19 @@ function handleClick() {
             
 
 
+{context.userLogin &&
+<>
+  <Nav.Link onClick={handleClick}>
+              Log Out
+            </Nav.Link>
 
-
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item  as={Link} to="/add">
+              Add Item
+        
+</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/delete">
+                Delete Item
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
@@ -61,6 +63,15 @@ function handleClick() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
+</>
+
+
+
+
+}
+
+
+    
           </Nav>
         </Navbar.Collapse>
       </Navbar>
