@@ -30,7 +30,12 @@ export default function Detail() {
   } else {
     return (
       <div>
-        <img src={product.code} alt="large"></img>
+      <div style={{
+        width: 400, height: 400, display: "inline-flex"
+      }}>
+                <img src={product.code} alt="large"></img>
+
+      </div>
         <h4>Price: {product.price}</h4>
 
         <p>Name: {product.name}</p>

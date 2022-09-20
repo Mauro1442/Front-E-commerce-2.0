@@ -5,11 +5,9 @@ import AlertCustom from "../Components/Alert";
 
 import { useNavigate } from "react-router-dom";
 import axios from "../Config/Axios";
-import AuthContext from "../Context/AuthContext";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 export default function AddItem(props) {
-  const context = useContext(AuthContext);
   const [alert, setAlert] = useState({ variant: "", text: "" });
 
   const {
@@ -33,9 +31,18 @@ export default function AddItem(props) {
     axios(config)
       .then(function (response) {
         console.log(response);
+        setAlert({
+          variant: "success",
+          text: "Item Added",
+        })
+        setTimeout(() => {
+          navigate("/")
+        }, 1000);
       })
       .catch(function (error) {
         console.log(error);
+        setAlert({ variant: "danger", text: error });
+
       });
   };
 
@@ -75,6 +82,13 @@ export default function AddItem(props) {
           register={{ ...register("quantity", { required: true }) }}
         />
         {errors.quantity && <span>Mandatory</span>}
+        <Input
+          label="Featured"
+          type="boolean"
+          register={{ ...register("destacado") }}
+        />
+        {errors.destacado && <span>Mandatory</span>}
+
 
         <Button type="submit" variant="dark">
           Add Item

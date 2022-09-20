@@ -8,6 +8,7 @@ import Signin from "../Pages/Signin";
 import Login from "../Pages/Login";
 import AddItem from "../Pages/Add Item";
 import DeleteItem from "../Pages/Delete Item";
+import ModifyItem from "../Pages/Modify";
 
 export default function Public(props) {
 
@@ -22,6 +23,8 @@ export default function Public(props) {
       <Route path="/sign" element={<Signin />} />
       <Route path="/add" element={<AddItem />} />
       <Route path="/delete" element={<DeleteItem />} />
+      <Route path="/modify/:id" element={<ModifyItem />} />
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

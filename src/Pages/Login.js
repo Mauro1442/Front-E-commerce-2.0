@@ -47,6 +47,9 @@ export default function Login(props) {
           variant: "success",
           text: "Welcome",
         });
+        setTimeout(() => {
+          navigate("/")
+        }, 1000);
         }
 
 

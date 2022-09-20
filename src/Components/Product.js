@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../Context/AuthContext";
+import { useContext } from "react";
+
+
 
 export default function Product(props) {
   const navigate = useNavigate();
+  const context = useContext(AuthContext)
+
 
   const { name, price, code, description, id } = props;
   return (
@@ -19,10 +25,15 @@ export default function Product(props) {
           <Card.Text>
             <p>{name}</p>
           </Card.Text>
+          {context.userLogin &&
 
-          <Button type="submit" variant="dark" onClick={() => navigate("/buy")}>
-            Order
+          <Button 
+          style={{  textDecoration: "none", color: "black" }}
+        as={Link}
+        to={"/modify/"+id}>
+            Modify
           </Button>
+          }
         </Card.Body>
       </Card>
     </Col>

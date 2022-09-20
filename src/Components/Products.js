@@ -28,7 +28,6 @@ export default function Products() {
   } else {
     return (
       <div>
-        <h1>Products</h1>
         <Row>
           {productsList.map((productOfList) => (
             <Product
