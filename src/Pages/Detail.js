@@ -31,15 +31,15 @@ export default function Detail() {
     return (
       <div>
       <div style={{
-        width: 400, height: 400, display: "inline-flex"
-      }}>
+        width: 400, height: 400, display: "inline-flex"}}>
                 <img src={product.code} alt="large" style={{maxHeight: "400"}}></img>
 
       </div>
-        <h4>Price: {product.price}</h4>
+        <h4>${product.price}</h4>
 
-        <p>Name: {product.name}</p>
-        <p>Description: {product.description}</p>
+        <h5>{product.name}</h5>
+        <p>Description:</p>
+        <p> {product.description}</p>
         <p>ID: {product._id}</p>
 
         <Button
