@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import { getAllProducts } from "../Services/productsServices";
+import { getByIdProducts } from "../Services/productsServices";
 import Product from "./Product";
 import { Row } from "react-bootstrap";
 
-export default function Products() {
+export default function Products(props) {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true);
+    const {search} = props
+
+  const item = "?buscar="+search
+
 
   useEffect(() => {
     const request = async () => {
       try {
         setLoading(true);
 
-        const response = await getAllProducts();
+        const response = await getByIdProducts(item);
         setProductsList(response.data);
         setLoading(false);
         console.log("products", response);
@@ -22,7 +26,7 @@ export default function Products() {
       }
     };
     request();
-  }, []);
+  }, [item]);
   if (loading) {
     return "loading...";
   } else {
