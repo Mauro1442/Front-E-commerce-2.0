@@ -88,6 +88,11 @@ export default function AddItem(props) {
           register={{ ...register("destacado") }}
         />
         {errors.destacado && <span>Mandatory</span>}
+        <Input
+          label="Category (ID)"
+          register={{ ...register("category", { required: true }) }}
+        />
+        {errors.thumbnail && <span>Mandatory field</span>}
 
 
         <Button type="submit" variant="dark">

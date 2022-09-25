@@ -27,12 +27,13 @@ function ModifyItem() {
     const request = async () => {
       try {
         const response = await getByIdProducts(id);
+        setValue("_id", response.data._id);
         setValue("name", response.data.name);
         setValue("price", response.data.price);
         setValue("code", response.data.code);
         setValue("description", response.data.description);
         setValue("destacado", response.data.destacado);
-
+        setValue("category", response.data.category);
 
       } catch (e) {}
     };
@@ -72,6 +73,11 @@ function ModifyItem() {
     <>
 
       <Form onSubmit={handleSubmit(onSubmit)}>
+      <Input
+          label="ID"
+          register={{ ...register("_id") }}
+        />
+        {errors._id && <span>Mandatory field</span>}
         <Input
           label="Name"
           register={{ ...register("name", { required: true }) }}
@@ -95,10 +101,14 @@ function ModifyItem() {
         {errors.thumbnail && <span>Mandatory field</span>}
         <Input
           label="Featured (true/false)"
-          type="boolean"
           register={{ ...register("destacado") }}
         />
         {errors.destacado && <span>Mandatory</span>}
+        <Input
+          label="Category (ID)"
+          register={{ ...register("category", { required: true }) }}
+        />
+        {errors.thumbnail && <span>Mandatory field</span>}
 
         <Button variant="dark" type="submit">
           Update

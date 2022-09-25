@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getByIdProducts } from "../Services/productsServices";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function Detail() {
@@ -26,7 +26,7 @@ export default function Detail() {
   }, [id]);
 
   if (loading) {
-    return "loading...";
+    return <Spinner animation="grow" variant="secondary"/>;
   } else {
     return (
       <div>
@@ -45,7 +45,7 @@ export default function Detail() {
         <Button
           type="submit"
           variant="warning"
-          onClick={() => navigate("/buy")}
+          onClick={() => navigate("/buy/" + id)}
         >
           Buy
         </Button>

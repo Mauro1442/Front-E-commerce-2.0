@@ -16,7 +16,7 @@ const {search} = props
       <Route path="/" element={<Home search={search}/>} />
       <Route path="/home" element={<Navigate to="/" />} />
       <Route path="/product/:id" element={<Detail />} />
-      <Route path="/buy" element={<Buy />} />
+      <Route path="/buy/:id" element={<Buy />} />
       <Route path="/log" element={<Login />} />
       <Route path="/sign" element={<Signin />} />
       <Route path="/add" element={<AddItem />} />
