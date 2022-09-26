@@ -3,7 +3,7 @@ import Input from "../Components/Input";
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-//import { login } from "../Services/usersServices";
+import AlertCustom from "../Components/Alert";
 import axios from "../Config/Axios";
 
 export default function Signin() {
@@ -15,8 +15,9 @@ export default function Signin() {
     formState: { errors },
   } = useForm();
 
-  const [signedIn, setSignedIn] = useState(false);
   const navigate = useNavigate();
+  const [alert, setAlert] = useState({ variant: "", text: "" });
+
 
   const onSubmit = async (data) => {
     var config = {
@@ -31,14 +32,21 @@ export default function Signin() {
     axios(config)
       .then(function (response) {
         console.log(response);
-        setSignedIn(true);
+        setAlert({
+          variant: "success",
+          text: "User Created",
+        });
+        setTimeout(() => {
+          navigate("/log")
+        }, 1000);
       })
       .catch(function (error) {
         console.log(error);
+        setAlert({ variant: "danger", text: error });
+
       });
   };
 
-  if (!signedIn) {
     return (
       <div>
         <Form
@@ -65,20 +73,15 @@ export default function Signin() {
           register={{ ...register("password", { required: true, minLength: 8  }) }}
         />
         {errors.password && <span>Mandatory</span>}
+
+
         <Button type="submit" variant="dark">
           Sign Me Up
         </Button>
+        <AlertCustom variant={alert.variant} text={alert.text} />
+
       </Form>
     </div>
     );
-  } else {
-    return (
-      <>
-        
-        <Button variant="dark" onClick={() => navigate("/log")}>
-          To Log
-        </Button>
-      </>
-    );
-  }
+
 }

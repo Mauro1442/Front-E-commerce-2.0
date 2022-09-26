@@ -1,26 +1,39 @@
 import { Link } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
+import AuthContext from "../Context/AuthContext";
+import { useContext } from "react";
+import "./Card.css";
+
 
 export default function Product(props) {
-  const { name, price, code, description, id } = props;
+  const context = useContext(AuthContext)
+
+
+  const { name, price, code, id } = props;
   return (
     <Col>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
+      <Card
+        style={{ className: "card", width: "18rem", textDecoration: "none", color: "black", marginTop: "20px" }}
+        as={Link}
+        to={"/product/" + id}
+      ><div style={{
+        width: "100%", height: "auto", display: "inline-flex"
+      }}>
+        <Card.Img variant="top" src={code} style={{display: "-ms-flexbox"}} /></div>
+        <Card.Body style={{marginLeft: "20px"}}>
+          <Card.Title>${price}</Card.Title>
           <Card.Text>
-            <li>price: {price}</li>
-            <li>code: {code}</li>
-            <li>description: {description} </li>
-            <li>id: {id}</li>
+            <p>{name}</p>
           </Card.Text>
-          <Button variant="dark" as={Link} to={"/product/" + id}>
-            See Detail
+          {context.userLogin &&
+
+          <Button variant="dark"
+          style={{  textDecoration: "none", color: "white" }}
+        as={Link}
+        to={"/modify/"+id}>
+            Modify
           </Button>
-          <Button type="submit" variant="warning">
-            Buy
-          </Button>
+          }
         </Card.Body>
       </Card>
     </Col>
