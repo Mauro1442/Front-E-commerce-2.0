@@ -33,6 +33,26 @@ export default function Menu(props) {
   return (
     <AuthContext.Consumer>
       {(context) => (
+        <>
+        <a href="https://wa.me/+4915739628651"   
+        target="_blank"
+        rel="noreferrer"
+         style={{
+      display: "inline-flex",
+        position: "fixed",
+  bottom: "25px",
+  right: "25px", zIndex: "2"
+      }}
+        >      <img 
+        src="../wplogo.png"
+        style={{
+        width: "50px", height: "auto", 
+      }}
+        id="fixedbutton"
+        alt="whatsapp"
+        
+      ></img></a>
+  
         <Navbar className="nbar" bg="light" expand="lg" sticky="top">
           <Container className="cont">
             <Navbar.Brand as={Link} to="/">
@@ -90,9 +110,10 @@ export default function Menu(props) {
           handleSearch();
         })}
               >
+               
                 <Form.Control
                   type="search"
-                  placeholder="Search"
+                /*  placeholder="Search" */
                   className="me-2"
                   aria-label="Search"
                   onChange={handleSearch}
@@ -102,9 +123,20 @@ export default function Menu(props) {
                   Search
                 </Button>
               </Form>
+              <a href="mailto:mauro_di86@hotmail.com"   
+        >      <img 
+        src="../mail.png"
+        style={{
+        width: "30px", height: "auto", marginLeft: "20px", marginRight:"20px", marginTop: "4px"
+      }}
+        id="fixedbutton"
+        alt="whatsapp"
+        
+      ></img></a>
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        </>
       )}
     </AuthContext.Consumer>
   );

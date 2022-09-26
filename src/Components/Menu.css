@@ -9,3 +9,8 @@
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }
+.fixedbutton {
+  position: fixed;
+  bottom: 560px;
+  right: 1000px; 
+}

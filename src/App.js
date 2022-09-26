@@ -7,18 +7,19 @@ import AuthProvider from "./Context/AuthProvider";
 import { useState } from "react";
 
 function App() {
-
-const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   return (
-    <AuthProvider>
-      <Router>
-        <Menu setSearch={setSearch}/>
-        <Container>
-          <Public search={search}/>
-        </Container>
-      </Router>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <Router>
+          <Menu setSearch={setSearch} />
+          <Container>
+            <Public search={search} />
+          </Container>
+        </Router>
+      </AuthProvider>
+    </>
   );
 }
 
